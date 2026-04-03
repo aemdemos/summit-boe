@@ -341,9 +341,12 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   header nav .nav-sections > div {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
     width: 100%;
   }
 
+  /* Nested wrapper (local dev with <hr> sections) */
   header nav .nav-sections > div > div {
     display: flex;
     align-items: center;

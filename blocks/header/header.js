@@ -247,11 +247,12 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  // Remove <hr> separators left by fragment loader
+  // Remove <hr> separators left by fragment loader (local dev)
   nav.querySelectorAll(':scope > hr').forEach((hr) => hr.remove());
 
-  // Assign classes to the 3 sections
-  const sectionDivs = [...nav.querySelectorAll(':scope > div.section')];
+  // Assign classes to the 3 nav sections.
+  // Fragment loader may produce div.section (DA) or plain div (local).
+  const sectionDivs = [...nav.querySelectorAll(':scope > div')];
   ['utility', 'brand', 'sections'].forEach((name, i) => {
     if (sectionDivs[i]) sectionDivs[i].classList.add(`nav-${name}`);
   });
