@@ -399,8 +399,13 @@ header .nav-search-panel {
   top: calc(var(--header-utility-height) + var(--header-main-height));
   left: 0;
   width: 100%;
-  height: calc(100vh - var(--header-utility-height) - var(--header-main-height));
-  z-index: 11;
+  z-index: 9;
+  transition: top 0.5s linear;
+}
+
+/* When scrolled, panel moves up in sync with header collapse */
+header:has(.nav-wrapper.scrolled) .nav-search-panel {
+  top: 64px;
 }
 
 header .nav-search-panel.open {
