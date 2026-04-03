@@ -211,18 +211,20 @@ function decorateSections(navSections) {
   if (!contentWrapper) return;
 
   contentWrapper.querySelectorAll(':scope > p').forEach((p) => {
+    const icon = p.querySelector('.icon');
     const link = p.querySelector('a');
-    if (!link) return;
-    link.classList.remove('button');
 
-    if (p.querySelector('.icon')) {
+    // Search icon paragraph (with or without link wrapper)
+    if (icon) {
       const searchBtn = document.createElement('button');
       searchBtn.type = 'button';
       searchBtn.className = 'nav-search-toggle';
       searchBtn.setAttribute('aria-label', 'Search');
-      searchBtn.append(p.querySelector('.icon'));
+      searchBtn.append(icon);
       p.replaceWith(searchBtn);
-    } else {
+    } else if (link) {
+      // Careers or other link
+      link.classList.remove('button');
       link.classList.add('nav-careers');
       p.classList.add('nav-careers-wrapper');
     }
