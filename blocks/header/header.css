@@ -183,8 +183,8 @@ header nav .nav-careers {
 }
 
 header nav .nav-careers:hover {
-  background-color: #fff;
-  color: var(--boeing-blue);
+  background-color: rgb(255 255 255 / 10%);
+  color: #fff;
 }
 
 header nav .nav-careers-wrapper {
@@ -366,25 +366,18 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
     border-bottom: none;
   }
 
+  /* Nav links: same height as search toggle, rounded-rect hover */
   header nav .nav-sections .nav-links > li > a {
-    padding: 8px 4px;
-    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 73px;
+    border-radius: 10px;
+    transition: background-color var(--transition-base);
   }
 
-  header nav .nav-sections .nav-links > li > a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #fff;
-    transform: scaleX(0);
-    transition: transform var(--transition-base);
-  }
-
-  header nav .nav-sections .nav-links > li > a:hover::after {
-    transform: scaleX(1);
+  header nav .nav-sections .nav-links > li > a:hover {
+    background-color: rgb(255 255 255 / 10%);
   }
 
   /* Careers + search: consistent spacing with nav links */
