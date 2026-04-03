@@ -412,6 +412,17 @@ header .nav-search-panel.open {
   display: block;
 }
 
+/* When search panel is open, let clicks through to the panel below */
+header:has(.nav-search-panel.open) .nav-wrapper {
+  pointer-events: none;
+}
+
+/* But keep the actual nav bars clickable (X button, etc.) */
+header:has(.nav-search-panel.open) .nav-utility,
+header:has(.nav-search-panel.open) .nav-main-bar {
+  pointer-events: auto;
+}
+
 /* Background — transparent container, layers via ::before (pattern) and ::after (gradient) */
 header .nav-search-bg {
   box-sizing: border-box;
