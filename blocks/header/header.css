@@ -404,6 +404,7 @@ header .nav-search-panel {
 
 header .nav-search-panel.open {
   display: block;
+  z-index: 11;
 }
 
 /* Background — transparent container, layers via ::before (pattern) and ::after (gradient) */
@@ -453,13 +454,13 @@ header .nav-search-bg::after {
   z-index: -1;
 }
 
-/* Content area — above both pseudo-element layers */
+/* Content area — vertically centered in visible dropdown area */
 header .nav-search-content {
   position: relative;
   z-index: 2;
   max-width: var(--header-nav-max-width);
   margin: 0 auto;
-  padding: 0 48px 0 200px;
+  padding: 16px 48px 0 200px;
 }
 
 /* Search title */
@@ -534,22 +535,19 @@ header .nav-search-submit {
   min-width: 0;
   margin: 0;
   height: 50px;
-  transition: background-color var(--transition-base), color var(--transition-base);
+  transition: gap 0.125s linear, background-color 0.125s linear, box-shadow 0.125s linear;
 }
 
+/* Hover: light blue bg, stretches via increased gap */
 header .nav-search-submit:hover {
-  background: var(--boeing-blue);
-  color: #fff;
+  background: rgb(227 239 250);
+  color: var(--boeing-blue);
   border-color: var(--boeing-blue);
+  gap: 32px;
+  box-shadow: 2px 4px 8px 2px rgb(0 0 0 / 25%);
 }
 
-header .nav-search-submit:hover .nav-search-submit-icon {
-  border-color: #fff;
-}
-
-header .nav-search-submit:hover .nav-search-submit-icon::after {
-  border-color: #fff;
-}
+/* Icon stays blue on hover (same as text) */
 
 /* Circled arrow icon */
 header .nav-search-submit-icon {
