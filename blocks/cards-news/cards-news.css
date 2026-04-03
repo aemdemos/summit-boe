@@ -1,0 +1,130 @@
+/* cards-news block */
+.cards-news {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* featured (large) card */
+.cards-news .cards-news-featured {
+  width: 100%;
+}
+
+.cards-news .cards-news-card-large {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--boeing-navy);
+}
+
+.cards-news .cards-news-card-large .cards-news-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cards-news .cards-news-card-large .cards-news-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-news .cards-news-card-large .cards-news-card-body {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  background: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, transparent 100%);
+  width: 100%;
+}
+
+.cards-news .cards-news-card-large .cards-news-card-body h4 {
+  color: #fff;
+  margin: 0 0 16px;
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+}
+
+.cards-news .cards-news-card-large .cards-news-card-body p {
+  margin: 0;
+}
+
+.cards-news .cards-news-card-large .cards-news-card-body a {
+  color: #fff;
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  text-decoration: none;
+}
+
+/* tile cards grid */
+.cards-news .cards-news-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards-news .cards-news-card-tile {
+  overflow: hidden;
+  background-color: var(--boeing-blue);
+}
+
+.cards-news .cards-news-card-tile .cards-news-card-image img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.cards-news .cards-news-card-tile .cards-news-card-body {
+  padding: 16px 20px 20px;
+}
+
+.cards-news .cards-news-card-tile .cards-news-card-body h4 {
+  color: #fff;
+  margin: 0 0 12px;
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Horizontal separator line below title */
+.cards-news .cards-news-card-tile .cards-news-card-body h4::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #fff;
+  margin-top: 12px;
+}
+
+.cards-news .cards-news-card-tile .cards-news-card-body p {
+  display: none;
+}
+
+@media (width >= 600px) {
+  .cards-news .cards-news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-news {
+    flex-direction: row;
+  }
+
+  .cards-news .cards-news-featured {
+    width: 50%;
+  }
+
+  .cards-news .cards-news-card-large {
+    min-height: 100%;
+  }
+
+  .cards-news .cards-news-grid {
+    width: 50%;
+  }
+}
