@@ -35,7 +35,7 @@ header nav .nav-utility {
   height: var(--header-utility-height);
   align-items: center;
   padding: 0 32px;
-  transition: height 0.5s linear, opacity 0.5s linear;
+  transition: height 0.5s linear;
 }
 
 header nav .nav-utility > div {
@@ -83,7 +83,6 @@ header nav .nav-utility a:hover {
 /* Scrolled: hide utility bar */
 header .nav-wrapper.scrolled .nav-utility {
   height: 0;
-  opacity: 0;
   overflow: hidden;
 }
 
