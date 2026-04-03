@@ -101,6 +101,15 @@ header .nav-wrapper.scrolled .nav-main-bar {
   height: 64px;
 }
 
+/* Scrolled: shrink nav link hover pills to fit condensed bar */
+header .nav-wrapper.scrolled .nav-sections .nav-links > li > a {
+  height: 48px;
+}
+
+header .nav-wrapper.scrolled .nav-search-toggle {
+  height: 48px;
+}
+
 /* ===== SWOOSH CURVE — inline SVG on main bar, path animated via JS ===== */
 .nav-swoosh {
   position: absolute;
