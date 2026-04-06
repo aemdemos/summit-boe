@@ -70,12 +70,12 @@
   color: rgb(255 255 255 / 80%);
 }
 
-/* Pause/play button — bottom-right, circular */
+/* Pause/play button — bottom-right, circular, above header */
 .hero-video .hero-video-pause {
   position: absolute;
   bottom: 16px;
   right: 16px;
-  z-index: 2;
+  z-index: 12;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -96,7 +96,7 @@
   border-color: rgb(255 255 255 / 50%);
 }
 
-/* Pause icon (two vertical bars) */
+/* Playing state — filled bars (default) */
 .hero-video .hero-video-pause-icon {
   display: flex;
   gap: 4px;
@@ -106,29 +106,20 @@
 .hero-video .hero-video-pause-icon::after {
   content: '';
   display: block;
-  width: 3px;
+  width: 4px;
   height: 14px;
   background: #fff;
   border-radius: 1px;
 }
 
-/* Play icon (triangle) when paused */
-.hero-video .hero-video-pause.paused .hero-video-pause-icon {
-  gap: 0;
-}
-
-.hero-video .hero-video-pause.paused .hero-video-pause-icon::before {
-  width: 0;
-  height: 0;
-  background: none;
-  border-style: solid;
-  border-width: 8px 0 8px 14px;
-  border-color: transparent transparent transparent #fff;
-  border-radius: 0;
-}
-
+/* Paused state — outline/empty bars */
+.hero-video .hero-video-pause.paused .hero-video-pause-icon::before,
 .hero-video .hero-video-pause.paused .hero-video-pause-icon::after {
-  display: none;
+  background: transparent;
+  border: 1.5px solid #fff;
+  width: 3px;
+  height: 14px;
+  border-radius: 1px;
 }
 
 @media (width >= 600px) {
