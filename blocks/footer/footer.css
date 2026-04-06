@@ -102,12 +102,9 @@ footer .footer .footer-col p:not(:first-child) {
 /* ===== Section 2: Footer utility links (Site Terms, Privacy, etc.) ===== */
 footer .footer .footer-links {
   margin-top: 64px;
+  padding-top: 32px;
   border-top: 2px solid var(--boeing-blue);
   max-width: 56%;
-}
-
-footer .footer .footer-links > div > div {
-  padding-top: 32px;
 }
 
 footer .footer .footer-links a {
