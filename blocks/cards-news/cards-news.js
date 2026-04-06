@@ -37,6 +37,16 @@ export default function decorate(block) {
 
     if (textCell) {
       textCell.classList.add('cards-news-card-body');
+      // Add descriptive aria-label to generic link text (e.g. "Learn More")
+      const heading = textCell.querySelector('h1, h2, h3, h4, h5, h6');
+      const link = textCell.querySelector('a');
+      if (heading && link) {
+        const linkText = link.textContent.trim();
+        const headingText = heading.textContent.trim();
+        if (linkText !== headingText) {
+          link.setAttribute('aria-label', `${linkText} - ${headingText}`);
+        }
+      }
       card.append(textCell);
     }
 
