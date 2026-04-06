@@ -79,7 +79,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 1px solid transparent;
+  border: none;
   background: rgb(0 0 0 / 15%);
   cursor: pointer;
   display: flex;
@@ -88,6 +88,7 @@
   padding: 0;
   margin: 0;
   min-width: 0;
+  outline: none;
   transition: background-color var(--transition-base);
 }
 
@@ -95,18 +96,25 @@
   background: rgb(0 0 0 / 30%);
 }
 
+.hero-video .hero-video-pause:focus,
+.hero-video .hero-video-pause:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
 /* Playing state — outline/empty bars (default) */
 .hero-video .hero-video-pause-icon {
   display: flex;
-  gap: 4px;
+  gap: 3px;
 }
 
 .hero-video .hero-video-pause-icon::before,
 .hero-video .hero-video-pause-icon::after {
   content: '';
   display: block;
-  width: 3px;
-  height: 14px;
+  width: 2px;
+  height: 12px;
   background: transparent;
   border: 1.5px solid #fff;
   border-radius: 1px;
