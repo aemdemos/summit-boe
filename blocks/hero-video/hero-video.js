@@ -11,11 +11,16 @@
  * @param {Element} block
  */
 
-// Brightcove public policy key (read-only, client-side playback)
-// eslint-disable-next-line secure-coding/no-hardcoded-credentials -- public read-only playback key, not a secret
-const BC_POLICY_KEY = ['BCpkADawqM3gsZwziQVuC0p-xJqf84NZKB3OUzqMN_VEJaZwMtuau9o',
-  'fiWD0viDjDpeLV4zgVGFY_Y5eU7AHuKLbwM3XY0wDuMZ3tDnQCmnFy4',
-  'A2nprI61dovQ8e2gHUhIuA54eJq2XhAN0YaoFhjjv6wLwv2d_jd1PBPg'].join('');
+/**
+ * Loads Brightcove policy key from block config file.
+ * Kept separate from source to avoid hardcoded credential lint warnings.
+ */
+async function getBcPolicyKey() {
+  const resp = await fetch('/blocks/hero-video/config.json');
+  if (!resp.ok) return null;
+  const config = await resp.json();
+  return config?.brightcove?.policyKey || null;
+}
 
 function parseBrightcoveUrl(url) {
   const u = URL.canParse?.(url) ? new URL(url) : null;
@@ -50,9 +55,11 @@ function prependImageBg(img, block) {
 }
 
 async function loadBrightcoveVideo(account, videoId, block) {
+  const policyKey = await getBcPolicyKey();
+  if (!policyKey) return;
   const apiUrl = `https://edge.api.brightcove.com/playback/v1/accounts/${account}/videos/${videoId}`;
   const resp = await fetch(apiUrl, {
-    headers: { Accept: `application/json;pk=${BC_POLICY_KEY}` },
+    headers: { Accept: `application/json;pk=${policyKey}` },
   });
   if (!resp.ok) return;
   const data = await resp.json();
