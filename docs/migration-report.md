@@ -6,6 +6,41 @@
 
 ---
 
+## CRITICAL: DA Content File Rules
+
+**This project uses DA (Document Authoring). There are TWO separate file systems that must stay in sync but use DIFFERENT formats.**
+
+### Two files, two formats
+
+| File | Purpose | Icon format | Who reads it |
+|------|---------|-------------|-------------|
+| `/workspace/content/*.plain.html` | **DA upload** — shown in workspace panel, uploaded to DA | `:icon-name:` text (e.g. `:search:`) | DA editor & publish pipeline |
+| `/workspace/*.plain.html` (root) | **Local preview** — served at localhost:3000 | `<span class="icon icon-name">` HTML | Local AEM CLI dev server |
+
+### Why this matters
+
+- **DA strips `<span>` elements** during HTML-to-document conversion
+- If `content/` files use `<span>` for icons, DA shows nothing — the icon is invisible
+- The `:icon-name:` text is what DA recognizes and displays as icons
+- When DA publishes, it converts `:icon-name:` back to `<span>` for the live site
+
+### Rules (MUST FOLLOW)
+
+1. **ALWAYS update `content/*.plain.html`** when content changes — this is what gets uploaded to DA
+2. **ALWAYS use `:icon-name:` text** in `content/` files, NEVER `<span>` elements
+3. **Keep root `*.plain.html` files** using `<span>` elements for local preview
+4. **After ANY content change**, verify BOTH files are updated and in the correct format
+5. **Never assume `content/` file is correct** just because the root preview file works
+
+### Checklist after every content update
+
+- [ ] `content/*.plain.html` uses `:icon-name:` text for icons
+- [ ] Root `*.plain.html` uses `<span class="icon icon-name">` for preview
+- [ ] Both files have the same content structure (sections, links, text)
+- [ ] Upload the `content/` file to DA and verify in the workspace panel
+
+---
+
 ## Homepage Structure
 
 The Boeing homepage has 9 content sections built around Boeing's core business areas. The design is predominantly dark-mode (navy/dark blue) with full-bleed imagery and card-based layouts.
@@ -102,7 +137,7 @@ accordion, card, card-carousel, cards, carousel, columns, embed, footer, form, f
 | 6 | **Services roadblock** | TODO | Needs: CTA pill button |
 | 7 | **Our Commitment (cards-feature + cards-mini)** | TODO | Needs: mini tiles styled, review |
 | 8 | **Careers roadblock** | TODO | Needs: CTA pill button |
-| 9 | **Footer** | TODO | Needs: review against reference |
+| 9 | **Footer** | DONE | 4-col grid, earth image, dark indigo gradient, legal bar with separator |
 
 ---
 
