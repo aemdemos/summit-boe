@@ -4,12 +4,14 @@
  *   Row 1: [text content (h1, etc.)] [video-link or poster-image]
  *
  * Supported video link formats:
- *   - Brightcove: https://players.brightcove.com/{account}/default_default/index.html?videoId={id}
+ *   - Brightcove: https://players.brightcove.com/{account}/.../index.html?videoId={id}
  *   - Direct MP4: https://example.com/video.mp4
  *   - Poster image fallback: <img> or <picture>
  *
  * @param {Element} block
  */
+
+const BC_POLICY_KEY = 'BCpkADawqM3gsZwziQVuC0p-xJqf84NZKB3OUzqMN_VEJaZwMtuau9ofiWD0viDjDpeLV4zgVGFY_Y5eU7AHuKLbwM3XY0wDuMZ3tDnQCmnFy4A2nprI61dovQ8e2gHUhIuA54eJq2XhAN0YaoFhjjv6wLwv2d_jd1PBPg';
 
 function parseBrightcoveUrl(url) {
   const u = URL.canParse?.(url) ? new URL(url) : null;
@@ -20,29 +22,20 @@ function parseBrightcoveUrl(url) {
   return null;
 }
 
-function createBrightcovePlayer(account, videoId, block) {
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('hero-video-bg', 'hero-video-bc');
-
-  const videoEl = document.createElement('video-js');
-  videoEl.setAttribute('data-account', account);
-  videoEl.setAttribute('data-player', 'default');
-  videoEl.setAttribute('data-embed', 'default');
-  videoEl.setAttribute('data-video-id', videoId);
-  videoEl.setAttribute('playsinline', '');
-  videoEl.setAttribute('autoplay', '');
-  videoEl.setAttribute('muted', '');
-  videoEl.setAttribute('loop', '');
-  videoEl.classList.add('vjs-fluid');
-  wrapper.append(videoEl);
-  block.prepend(wrapper);
-
-  const script = document.createElement('script');
-  script.src = `https://players.brightcove.com/${account}/default_default/index.min.js`;
-  script.async = true;
-  document.head.append(script);
-
-  return videoEl;
+function createNativeVideo(src, poster) {
+  const video = document.createElement('video');
+  video.classList.add('hero-video-bg');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('muted', '');
+  video.setAttribute('loop', '');
+  video.setAttribute('playsinline', '');
+  video.muted = true;
+  if (poster) video.setAttribute('poster', poster);
+  const source = document.createElement('source');
+  source.setAttribute('src', src);
+  source.setAttribute('type', 'video/mp4');
+  video.append(source);
+  return video;
 }
 
 function prependImageBg(img, block) {
@@ -52,19 +45,32 @@ function prependImageBg(img, block) {
   block.prepend(wrapper);
 }
 
-function createMp4Video(href, img, block) {
-  const videoEl = document.createElement('video');
-  videoEl.classList.add('hero-video-bg');
-  videoEl.setAttribute('autoplay', '');
-  videoEl.setAttribute('muted', '');
-  videoEl.setAttribute('loop', '');
-  videoEl.setAttribute('playsinline', '');
-  const source = document.createElement('source');
-  source.setAttribute('src', href);
-  source.setAttribute('type', 'video/mp4');
-  videoEl.append(source);
-  if (img) videoEl.setAttribute('poster', img.src);
-  block.prepend(videoEl);
+async function loadBrightcoveVideo(account, videoId, block) {
+  const apiUrl = `https://edge.api.brightcove.com/playback/v1/accounts/${account}/videos/${videoId}`;
+  const resp = await fetch(apiUrl, {
+    headers: { Accept: `application/json;pk=${BC_POLICY_KEY}` },
+  });
+  if (!resp.ok) return;
+  const data = await resp.json();
+
+  // Find the best MP4 source
+  const mp4Sources = (data.sources || [])
+    .filter((s) => s.src && s.container === 'MP4' && s.src.startsWith('https'))
+    .sort((a, b) => (b.width || 0) - (a.width || 0));
+
+  const mp4Src = mp4Sources[0]?.src;
+  const { poster } = data;
+
+  if (mp4Src) {
+    const video = createNativeVideo(mp4Src, poster);
+    block.prepend(video);
+  } else if (poster) {
+    // Fallback to poster image
+    const img = document.createElement('img');
+    img.src = poster;
+    img.alt = '';
+    prependImageBg(img, block);
+  }
 }
 
 function setupMedia(mediaCell, block) {
@@ -74,9 +80,14 @@ function setupMedia(mediaCell, block) {
 
   if (link) {
     const bc = parseBrightcoveUrl(link.href);
-    if (bc) return createBrightcovePlayer(bc.account, bc.videoId, block);
+    if (bc) {
+      // Fetch MP4 from Brightcove API and create native video
+      loadBrightcoveVideo(bc.account, bc.videoId, block);
+      return;
+    }
     if (link.href.includes('.mp4')) {
-      createMp4Video(link.href, img, block);
+      const video = createNativeVideo(link.href, img?.src);
+      block.prepend(video);
     } else if (img) {
       prependImageBg(img, block);
     }
@@ -86,19 +97,31 @@ function setupMedia(mediaCell, block) {
   } else if (img) {
     prependImageBg(img, block);
   }
-  return null;
 }
 
-function toggleBcPlayer(bcPlayer, pauseBtn) {
-  const player = bcPlayer.player || window.videojs?.(bcPlayer);
-  if (!player) return;
-  if (player.paused()) {
-    player.play();
-    pauseBtn.classList.remove('paused');
-  } else {
-    player.pause();
-    pauseBtn.classList.add('paused');
-  }
+function addPauseButton(block) {
+  const pauseBtn = document.createElement('button');
+  pauseBtn.type = 'button';
+  pauseBtn.className = 'hero-video-pause';
+  pauseBtn.setAttribute('aria-label', 'Pause video');
+  const pauseIcon = document.createElement('span');
+  pauseIcon.className = 'hero-video-pause-icon';
+  pauseBtn.append(pauseIcon);
+  block.append(pauseBtn);
+
+  pauseBtn.addEventListener('click', () => {
+    const video = block.querySelector('video');
+    if (!video) return;
+    if (video.paused) {
+      video.play();
+      pauseBtn.classList.remove('paused');
+      pauseBtn.setAttribute('aria-label', 'Pause video');
+    } else {
+      video.pause();
+      pauseBtn.classList.add('paused');
+      pauseBtn.setAttribute('aria-label', 'Play video');
+    }
+  });
 }
 
 export default function decorate(block) {
@@ -115,42 +138,15 @@ export default function decorate(block) {
     ? [cells[1], cells[0]]
     : [cells[0], cells[1]];
 
-  const bcPlayer = setupMedia(mediaCell, block);
+  setupMedia(mediaCell, block);
 
-  // Build text overlay
   if (textCell) {
     textCell.classList.add('hero-video-text');
     block.append(textCell);
   }
 
-  // Add pause/play button
-  const pauseBtn = document.createElement('button');
-  pauseBtn.type = 'button';
-  pauseBtn.className = 'hero-video-pause';
-  pauseBtn.setAttribute('aria-label', 'Pause video');
-  const pauseIcon = document.createElement('span');
-  pauseIcon.className = 'hero-video-pause-icon';
-  pauseBtn.append(pauseIcon);
-  block.append(pauseBtn);
+  addPauseButton(block);
 
-  pauseBtn.addEventListener('click', () => {
-    const video = block.querySelector('video');
-    if (video) {
-      if (video.paused) {
-        video.play();
-        pauseBtn.classList.remove('paused');
-        pauseBtn.setAttribute('aria-label', 'Pause video');
-      } else {
-        video.pause();
-        pauseBtn.classList.add('paused');
-        pauseBtn.setAttribute('aria-label', 'Play video');
-      }
-    } else if (bcPlayer) {
-      toggleBcPlayer(bcPlayer, pauseBtn);
-    }
-  });
-
-  // Clean up original rows
   rows.forEach((row) => {
     if (block.contains(row)) row.remove();
   });
