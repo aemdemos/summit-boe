@@ -35,30 +35,15 @@
   object-fit: cover;
 }
 
-/* Brightcove player — fill container, no controls */
-.hero-video .hero-video-bc {
+
+/* Left-side gradient overlay for text readability */
+.hero-video::after {
+  content: '';
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.hero-video .hero-video-bc video-js,
-.hero-video .hero-video-bc .video-js {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-}
-
-.hero-video .hero-video-bc .video-js video {
-  object-fit: cover;
-}
-
-/* Hide Brightcove default controls — we use our own pause button */
-.hero-video .hero-video-bc .vjs-control-bar,
-.hero-video .hero-video-bc .vjs-big-play-button,
-.hero-video .hero-video-bc .vjs-loading-spinner {
-  display: none !important; /* stylelint-disable-line declaration-no-important */
+  background: linear-gradient(to right, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 15%) 40%, transparent 65%);
+  pointer-events: none;
 }
 
 /* Text overlay — left-aligned, vertically centered */
@@ -75,10 +60,10 @@
 .hero-video .hero-video-text h1 {
   color: #fff;
   margin: 0;
-  font-size: var(--heading-font-size-xxl);
+  font-size: var(--heading-font-size-xl);
   font-weight: 300;
   line-height: 1.15;
-  max-width: 500px;
+  max-width: 580px;
 }
 
 .hero-video .hero-video-text p {
@@ -152,14 +137,14 @@
   }
 
   .hero-video .hero-video-text h1 {
-    font-size: 44px;
-    max-width: 520px;
+    font-size: 52px;
+    max-width: 540px;
   }
 }
 
 @media (width >= 900px) {
   .hero-video {
-    min-height: 480px;
+    min-height: 500px;
   }
 
   .hero-video .hero-video-text {
@@ -167,7 +152,7 @@
   }
 
   .hero-video .hero-video-text h1 {
-    font-size: 54px;
-    max-width: 580px;
+    font-size: 68px;
+    max-width: 620px;
   }
 }
