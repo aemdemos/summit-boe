@@ -129,7 +129,7 @@ accordion, card, card-carousel, cards, carousel, columns, embed, footer, form, f
 |---|---------|--------|-------|
 | 0 | **Header — nav bar** | DONE | Utility bar, main nav, logo, swoosh curve animation, Careers pill, search icon |
 | 0a | **Header — search dropdown** | DONE | Gradient, SVG mask curve, background pattern, X toggle, height, full width |
-| 1 | **Hero video** | DONE | Background image, left-aligned light text |
+| 1 | **Hero video** | DONE | 480px height, centered text, pause/play button, poster image |
 | 2 | **Recent news (cards-news)** | NEXT | Needs: white bg, "VIEW ALL FEATURE STORIES" pill CTA |
 | 3 | **Featured products (cards-product)** | TODO | Needs: white bg, spacing |
 | 4 | **Safety roadblock** | TODO | Needs: CTA pill button with circled arrow |
