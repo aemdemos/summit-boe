@@ -79,7 +79,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 1px solid rgb(255 255 255 / 30%);
+  border: 1px solid transparent;
   background: rgb(0 0 0 / 15%);
   cursor: pointer;
   display: flex;
@@ -93,10 +93,9 @@
 
 .hero-video .hero-video-pause:hover {
   background: rgb(0 0 0 / 30%);
-  border-color: rgb(255 255 255 / 50%);
 }
 
-/* Playing state — filled bars (default) */
+/* Playing state — outline/empty bars (default) */
 .hero-video .hero-video-pause-icon {
   display: flex;
   gap: 4px;
@@ -106,20 +105,18 @@
 .hero-video .hero-video-pause-icon::after {
   content: '';
   display: block;
-  width: 4px;
+  width: 3px;
   height: 14px;
-  background: #fff;
+  background: transparent;
+  border: 1.5px solid #fff;
   border-radius: 1px;
 }
 
-/* Paused state — outline/empty bars */
+/* Paused state — filled/solid bars */
 .hero-video .hero-video-pause.paused .hero-video-pause-icon::before,
 .hero-video .hero-video-pause.paused .hero-video-pause-icon::after {
-  background: transparent;
-  border: 1.5px solid #fff;
-  width: 3px;
-  height: 14px;
-  border-radius: 1px;
+  background: #fff;
+  border-color: #fff;
 }
 
 @media (width >= 600px) {
