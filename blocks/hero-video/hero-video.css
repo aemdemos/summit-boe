@@ -1,0 +1,157 @@
+/* hero-video block */
+.hero-video-container .hero-video-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-video {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 400px;
+  overflow: hidden;
+  background-color: var(--boeing-navy);
+}
+
+/* Background media (video, picture, or raw img wrapper) */
+.hero-video .hero-video-bg,
+.hero-video video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-video div.hero-video-bg {
+  display: block;
+}
+
+.hero-video div.hero-video-bg img,
+.hero-video picture.hero-video-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* Left-side gradient overlay — dark indigo, matching reference */
+.hero-video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(248deg, rgb(25 18 138 / 0%) 14.24%, rgb(15 15 108 / 0%) 30.69%, rgb(14 8 93 / 40%) 50.22%, rgb(6 3 62 / 60%) 69.31%, rgb(2 1 27 / 80%) 85.76%);
+  pointer-events: none;
+}
+
+/* Text overlay — left-aligned, vertically centered */
+.hero-video .hero-video-text {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width-site);
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px var(--section-padding-horizontal);
+  text-align: left;
+}
+
+.hero-video .hero-video-text h1 {
+  color: #fff;
+  margin: 0;
+  font-size: var(--heading-font-size-xl);
+  font-weight: 300;
+  line-height: 1.15;
+  max-width: 580px;
+}
+
+.hero-video .hero-video-text p {
+  color: rgb(255 255 255 / 80%);
+}
+
+/* Pause/play button — bottom-right, circular, above header */
+.hero-video .hero-video-pause {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 12;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(0 0 0 / 15%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  outline: none;
+  transition: background-color var(--transition-base);
+}
+
+.hero-video .hero-video-pause:hover {
+  background: rgb(0 0 0 / 30%);
+}
+
+.hero-video .hero-video-pause:focus,
+.hero-video .hero-video-pause:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Playing state — outline/empty bars (default) */
+.hero-video .hero-video-pause-icon {
+  display: flex;
+  gap: 3px;
+}
+
+.hero-video .hero-video-pause-icon::before,
+.hero-video .hero-video-pause-icon::after {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 12px;
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 1px;
+}
+
+/* Paused state — filled/solid bars */
+.hero-video .hero-video-pause.paused .hero-video-pause-icon::before,
+.hero-video .hero-video-pause.paused .hero-video-pause-icon::after {
+  background: #fff;
+  border-color: #fff;
+}
+
+@media (width >= 600px) {
+  .hero-video {
+    min-height: 420px;
+  }
+
+  .hero-video .hero-video-text h1 {
+    font-size: 52px;
+    max-width: 540px;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-video {
+    min-height: 500px;
+  }
+
+  .hero-video .hero-video-text {
+    padding: 48px 0 48px 96px;
+    max-width: none;
+    width: auto;
+  }
+
+  .hero-video .hero-video-text h1 {
+    font-size: 68px;
+    max-width: 45%;
+    margin-bottom: 64px;
+  }
+}

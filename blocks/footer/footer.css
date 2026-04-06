@@ -1,22 +1,155 @@
 @import url('./footer-tokens.css');
 
+/* Footer — same gradient as search dropdown, with earth image */
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  position: relative;
+  background: linear-gradient(225deg, rgb(25 18 138), rgb(15 15 108) 23%, rgb(14 8 93) 50.31%, rgb(6 3 62) 77%, rgb(2 1 27));
+  color: var(--boeing-light-blue);
+  font-size: 16px;
+  padding: 96px 0 0;
+  overflow: hidden;
+}
+
+/* Earth image — bottom-right, behind content */
+footer::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 450px;
+  background-image: url('/icons/footer-earth.png');
+  background-size: contain;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+footer .footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hide section separator <hr> inside footer */
+footer .footer hr {
+  display: none;
 }
 
 footer .footer > div {
   margin: auto;
   max-width: var(--footer-max-width);
-  padding: var(--footer-padding);
+  padding: 0 32px;
+}
+
+/* ===== Section 1: Link columns — 4-column grid ===== */
+footer .footer .footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 48px;
+}
+
+footer .footer .footer-col {
+  margin-bottom: 16px;
 }
 
 footer .footer p {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: var(--footer-padding-desktop);
+/* Column headings */
+footer .footer .footer-nav p strong {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+/* First row headings — no top margin */
+footer .footer .footer-col:nth-child(-n+4) p:first-child strong {
+  margin-top: 0;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+}
+
+footer .footer li {
+  margin-bottom: 8px;
+}
+
+footer .footer a {
+  color: var(--boeing-light-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 16px;
+}
+
+footer .footer a:hover {
+  color: #fff;
+}
+
+/* Stock Price — plain text styling in footer-col */
+footer .footer .footer-col p:not(:first-child) {
+  color: var(--boeing-light-blue);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ===== Section 2: Footer utility links (Site Terms, Privacy, etc.) ===== */
+footer .footer .footer-links {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 2px solid var(--boeing-blue);
+  max-width: 56%;
+}
+
+footer .footer .footer-links a {
+  color: var(--boeing-light-blue);
+  font-size: 16px;
+}
+
+/* ===== Section 3: Copyright (last) ===== */
+footer .footer .footer-copyright {
+  padding-top: 16px;
+  padding-bottom: 40px;
+}
+
+footer .footer .footer-copyright p {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* ===== Stock Price column — 10px, white text, italic ticker in light blue ===== */
+footer .footer .footer-col:last-child p:not(:first-child) {
+  font-size: 10px;
+  color: #fff;
+  margin-top: 4px;
+}
+
+footer .footer .footer-col:last-child p:not(:first-child) em {
+  color: var(--boeing-light-blue);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ===== Mobile: 2 columns ===== */
+@media (width < 600px) {
+  footer .footer .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  footer .footer .footer-links {
+    max-width: 100%;
+  }
+}
+
+/* Single column for very small */
+@media (width < 400px) {
+  footer .footer .footer-columns {
+    grid-template-columns: 1fr;
   }
 }

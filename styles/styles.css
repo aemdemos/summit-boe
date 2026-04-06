@@ -1,81 +1,109 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * Boeing Design System - Migrated from boeing.com
+ * Primary font: Boeing Meso (self-hosted)
+ * Color scheme: Boeing Blue (#0033A1) with dark navy sections
  */
 
 :root {
-  /* colors */
-  --background-color: white;
+  /* colors - boeing brand */
+  --boeing-blue: #0033a1;
+  --boeing-navy: #0a2240;
+  --boeing-dark-navy: #253746;
+  --boeing-light-blue: #82d4f6;
+  --boeing-sky-blue: #bbd8f2;
+  --boeing-hover-light: #e3effa;
+  --boeing-hover-dark: #113c65;
+  --boeing-link-blue: #0078b8;
+  --boeing-secondary-blue: #19398a;
+  --boeing-ice-blue: #e1f5fd;
+
+  /* colors - semantic */
+  --background-color: #fff;
   --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --overlay-background-color:lightgrey;
+  --dark-color: var(--boeing-navy);
+  --text-color: var(--boeing-dark-navy);
+  --text-color-muted: #66737e;
+  --link-color: var(--boeing-link-blue);
+  --link-hover-color: var(--boeing-hover-dark);
+  --overlay-background-color: rgb(0 0 0 / 45%);
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'Boeing Meso', boeing-meso-fallback, sans-serif;
+  --heading-font-family: 'Boeing Meso', boeing-meso-fallback, sans-serif;
+  --fixed-font-family: 'Roboto Mono', menlo, consolas, monospace;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* body sizes - mobile first */
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* heading sizes - mobile first */
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 36px;
+  --heading-font-size-l: 28px;
+  --heading-font-size-m: 25px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 16px;
 
   /* layout */
-  --max-width-site: 1200px;
+  --max-width-site: 1152px;
 
   /* nav heights */
   --nav-height: 64px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 
-  /* fixed-width / code */
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, monospace;
+  /* header total (utility bar + main nav on desktop) */
+
+  /* spacing */
+  --section-padding-vertical: 48px;
+  --section-padding-horizontal: 16px;
+
+  /* buttons */
+  --button-border-radius: 50px;
+  --button-letter-spacing: 1.3px;
+  --button-text-transform: uppercase;
+  --button-font-weight: 500;
+  --button-transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  /* transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* focus */
+  --focus-outline: 2px solid currentcolor;
+  --focus-outline-offset: 2px;
 }
 
-/* fallback fonts */
+/* fallback font */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
+  font-family: boeing-meso-fallback;
+  size-adjust: 100%;
   src: local('Arial');
 }
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+/* tablet breakpoint */
+@media (width >= 600px) {
+  :root {
+    --heading-font-size-xxl: 44px;
+    --heading-font-size-xl: 53px;
+    --heading-font-size-l: 37px;
+    --heading-font-size-m: 31px;
+    --section-padding-horizontal: 24px;
+  }
 }
 
+/* desktop breakpoint */
 @media (width >= 900px) {
   :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
+    --heading-font-size-xxl: 54px;
+    --heading-font-size-xl: 68px;
+    --heading-font-size-l: 43px;
+    --heading-font-size-m: 35px;
+    --heading-font-size-s: 22px;
+    --section-padding-vertical: 80px;
+    --section-padding-horizontal: 32px;
   }
 }
 
@@ -86,7 +114,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 body.appear {
@@ -113,6 +141,7 @@ footer .footer[data-block-status="loaded"] {
   }
 }
 
+/* headings */
 h1,
 h2,
 h3,
@@ -122,17 +151,32 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1.15;
   scroll-margin: 40px;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  font-weight: 300;
+}
+
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+
+h5 {
+  font-size: var(--heading-font-size-xs);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+h6 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 400;
+  line-height: 1.5;
+}
 
 p,
 dl,
@@ -174,6 +218,7 @@ a {
   color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
+  transition: color var(--transition-base);
 }
 
 a:hover {
@@ -181,49 +226,87 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+/* buttons - primary (default) */
 a.button,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
   margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border: 1px solid var(--boeing-blue);
+  border-radius: var(--button-border-radius);
+  padding: 8px 16px;
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--button-font-weight);
+  font-size: var(--body-font-size-s);
   line-height: 1.25;
+  letter-spacing: var(--button-letter-spacing);
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  text-transform: var(--button-text-transform);
+  background-color: var(--background-color);
+  color: var(--boeing-blue);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: var(--button-transition);
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--boeing-hover-dark);
+  color: var(--background-color);
+  border-color: var(--boeing-hover-dark);
   cursor: pointer;
+}
+
+a.button:focus,
+button:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
+  color: var(--text-color-muted);
+  border-color: var(--light-color);
   cursor: unset;
 }
 
+/* buttons - secondary (outline) */
 a.button.secondary,
 button.secondary {
-  background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid var(--boeing-blue);
+  color: var(--boeing-blue);
+}
+
+a.button.secondary:hover,
+button.secondary:hover {
+  background-color: var(--boeing-ice-blue);
+  color: var(--boeing-blue);
+  border-color: var(--boeing-blue);
+}
+
+/* buttons - tertiary (text-only) */
+a.button.tertiary,
+button.tertiary {
+  background-color: transparent;
+  border: none;
+  color: var(--boeing-blue);
+  font-weight: 700;
+  padding: 4px 16px;
+}
+
+a.button.tertiary:hover,
+button.tertiary:hover {
+  background-color: transparent;
+  color: var(--boeing-hover-dark);
 }
 
 main img {
@@ -245,29 +328,110 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 0;
+  padding: var(--section-padding-vertical) 0;
 }
 
 main > .section > div {
   max-width: var(--max-width-site);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--section-padding-horizontal);
 }
 
 main > .section:first-of-type {
   margin-top: 0;
+  padding-top: 0;
 }
 
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
-  }
-}
-
-/* section metadata */
+/* section variants */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
+}
+
+main .section.dark {
+  background-color: var(--boeing-navy);
+  color: #fff;
+}
+
+main .section.dark h1,
+main .section.dark h3 {
+  color: var(--boeing-sky-blue);
+}
+
+main .section.dark h2 {
+  color: var(--boeing-sky-blue);
+}
+
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6,
+main .section.dark p {
+  color: #fff;
+}
+
+main .section.dark a {
+  color: var(--boeing-light-blue);
+}
+
+main .section.dark a:hover {
+  color: #fff;
+}
+
+main .section.dark a.button {
+  background-color: #fff;
+  color: var(--boeing-blue);
+  border-color: var(--boeing-blue);
+}
+
+main .section.dark a.button:hover {
+  background-color: var(--boeing-hover-light);
+  color: var(--boeing-blue);
+}
+
+main .section.dark a.button.secondary {
+  background-color: transparent;
+  border-color: #fff;
+  color: #fff;
+}
+
+main .section.dark a.button.secondary:hover {
+  background-color: var(--boeing-secondary-blue);
+  color: #fff;
+}
+
+main .section.dark a.button.tertiary {
+  color: #fff;
+  border: none;
+  background-color: transparent;
+}
+
+main .section.dark a.button.tertiary:hover {
+  color: var(--boeing-sky-blue);
+  background-color: transparent;
+}
+
+/* section headings on white/light backgrounds — Boeing blue */
+main .section:not(.dark) h2,
+main .section:not(.dark) h3 {
+  color: var(--boeing-blue);
+}
+
+/* eyebrow text pattern (bold uppercase label above headings) */
+main .section .default-content-wrapper p strong:only-child {
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* "View all" CTA buttons — pill style with arrow */
+main .section:not(.dark) .default-content-wrapper a.button {
+  background-color: var(--boeing-blue);
+  color: #fff;
+  border-color: var(--boeing-blue);
+}
+
+main .section:not(.dark) .default-content-wrapper a.button:hover {
+  background-color: var(--boeing-hover-dark);
+  border-color: var(--boeing-hover-dark);
 }
