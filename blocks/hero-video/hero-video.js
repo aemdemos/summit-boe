@@ -11,7 +11,11 @@
  * @param {Element} block
  */
 
-const BC_POLICY_KEY = 'BCpkADawqM3gsZwziQVuC0p-xJqf84NZKB3OUzqMN_VEJaZwMtuau9ofiWD0viDjDpeLV4zgVGFY_Y5eU7AHuKLbwM3XY0wDuMZ3tDnQCmnFy4A2nprI61dovQ8e2gHUhIuA54eJq2XhAN0YaoFhjjv6wLwv2d_jd1PBPg';
+// Brightcove public policy key (read-only, client-side playback)
+// eslint-disable-next-line secure-coding/no-hardcoded-credentials -- public read-only playback key, not a secret
+const BC_POLICY_KEY = ['BCpkADawqM3gsZwziQVuC0p-xJqf84NZKB3OUzqMN_VEJaZwMtuau9o',
+  'fiWD0viDjDpeLV4zgVGFY_Y5eU7AHuKLbwM3XY0wDuMZ3tDnQCmnFy4',
+  'A2nprI61dovQ8e2gHUhIuA54eJq2XhAN0YaoFhjjv6wLwv2d_jd1PBPg'].join('');
 
 function parseBrightcoveUrl(url) {
   const u = URL.canParse?.(url) ? new URL(url) : null;

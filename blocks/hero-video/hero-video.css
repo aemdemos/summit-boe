@@ -36,13 +36,13 @@
 }
 
 
-/* Left-side gradient overlay for text readability */
+/* Left-side gradient overlay — dark indigo, matching reference */
 .hero-video::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(to right, rgb(0 0 0 / 40%) 0%, rgb(0 0 0 / 15%) 40%, transparent 65%);
+  background: linear-gradient(248deg, rgb(25 18 138 / 0%) 14.24%, rgb(15 15 108 / 0%) 30.69%, rgb(14 8 93 / 40%) 50.22%, rgb(6 3 62 / 60%) 69.31%, rgb(2 1 27 / 80%) 85.76%);
   pointer-events: none;
 }
 
@@ -148,11 +148,14 @@
   }
 
   .hero-video .hero-video-text {
-    padding: 48px 32px;
+    padding: 48px 0 48px 96px;
+    max-width: none;
+    width: auto;
   }
 
   .hero-video .hero-video-text h1 {
     font-size: 68px;
-    max-width: 620px;
+    max-width: 45%;
+    margin-bottom: 64px;
   }
 }
