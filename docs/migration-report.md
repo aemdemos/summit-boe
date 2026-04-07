@@ -130,7 +130,7 @@ accordion, card, card-carousel, cards, carousel, columns, embed, footer, form, f
 | 0 | **Header — nav bar** | DONE | Utility bar, main nav, logo, swoosh curve animation, Careers pill, search icon |
 | 0a | **Header — search dropdown** | DONE | Gradient, SVG mask curve, background pattern, X toggle, height, full width |
 | 1 | **Hero video** | DONE | Brightcove video, 500px height, left-aligned 68px text, pause/play button, indigo gradient overlay |
-| 2 | **Recent news (cards-news)** | IN PROGRESS | Featured card top-left text, tile hover, shadows, chevron arrow, underline hover. Responsive 80vw container. |
+| 2 | **Recent news (cards-news)** | DONE | Featured card (top-left text, blur hover, Learn More underline), tiles (light blue line, Read more fade-in), View all pill button with stretch animation |
 | 3 | **Featured products (cards-product)** | NEXT | Needs: review against reference |
 | 4 | **Safety roadblock** | TODO | Needs: CTA pill button with circled arrow |
 | 5 | **Our Purpose (cards-feature)** | TODO | Needs: review |
