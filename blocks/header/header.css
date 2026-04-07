@@ -625,8 +625,10 @@ header .nav-search-toggle.active::after {
   transform: rotate(-45deg);
 }
 
-/* ===== MOBILE EXPANDED STATE ===== */
-header nav[aria-expanded='true'] {
-  min-height: 100dvh;
-  overflow-y: auto;
+/* ===== MOBILE EXPANDED STATE (only below desktop breakpoint) ===== */
+@media (width < 900px) {
+  header nav[aria-expanded='true'] {
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
 }
