@@ -154,27 +154,53 @@
   display: block;
 }
 
-.cards-news .cards-news-card-tile .cards-news-card-body {
-  padding: 16px 20px 20px;
-}
-
 .cards-news .cards-news-card-tile .cards-news-card-body h3 {
   color: #fff;
   margin: 0;
   font-size: 22px;
   font-weight: 400;
   line-height: 1.5;
-  transition: color var(--transition-base);
+  transition: color 0.25s linear;
 }
 
-/* Separator line below title */
+/* Separator line + read more container */
 .cards-news .cards-news-card-tile .cards-news-card-body h3::after {
   content: '';
   display: block;
-  width: 40px;
+  width: 37px;
   height: 2px;
-  background: #fff;
+  background: var(--boeing-light-blue);
   margin-top: 12px;
+  transition: width 0.25s linear;
+}
+
+/* Tile body — relative position for read more text */
+.cards-news .cards-news-card-tile .cards-news-card-body {
+  padding: 16px 20px 20px;
+  position: relative;
+}
+
+/* "Read more" text — below the line, right-aligned, hidden by default */
+.cards-news .cards-news-card-tile .cards-news-card-body::after {
+  content: 'Read more';
+  display: block;
+  color: var(--boeing-light-blue);
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: right;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+  font-weight: 400;
+}
+
+/* Hover: line extends, read more fades in, title turns light blue */
+.cards-news .cards-news-card-tile:hover .cards-news-card-body h3::after {
+  width: 100%;
+}
+
+.cards-news .cards-news-card-tile:hover .cards-news-card-body::after {
+  opacity: 0.8;
 }
 
 .cards-news .cards-news-card-tile .cards-news-card-body p {
