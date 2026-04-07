@@ -121,8 +121,10 @@
   display: block;
 }
 
+/* Tile body — relative for read more ::after */
 .cards-news .cards-news-card-tile .cards-news-card-body {
   padding: 16px 20px 20px;
+  position: relative;
 }
 
 .cards-news .cards-news-card-tile .cards-news-card-body h3 {
@@ -143,12 +145,6 @@
   background: var(--boeing-light-blue);
   margin-top: 12px;
   transition: width 0.25s linear;
-}
-
-/* Tile body — relative position for read more text */
-.cards-news .cards-news-card-tile .cards-news-card-body {
-  padding: 16px 20px 20px;
-  position: relative;
 }
 
 /* "Read more" text — below the line, right-aligned, hidden by default */
