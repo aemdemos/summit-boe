@@ -45,8 +45,8 @@
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 16px;
 
-  /* layout — matches reference: 1152px up to 1440px, then 80vw above */
-  --max-width-site: 1152px;
+  /* layout — 80vw responsive, min 1152px, capped at 1536px */
+  --max-width-site: clamp(1152px, 80vw, 1536px);
 
   /* nav heights */
   --nav-height: 64px;
@@ -104,13 +104,6 @@
     --heading-font-size-s: 22px;
     --section-padding-vertical: 80px;
     --section-padding-horizontal: 32px;
-  }
-}
-
-/* wide desktop — container scales to 80% of viewport above 1440px */
-@media (width > 1440px) {
-  :root {
-    --max-width-site: 80vw;
   }
 }
 
