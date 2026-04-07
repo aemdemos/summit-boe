@@ -37,6 +37,19 @@ export default function decorate(block) {
 
     if (textCell) {
       textCell.classList.add('cards-news-card-body');
+      // Make generic links descriptive for accessibility and SEO
+      const heading = textCell.querySelector('h1, h2, h3, h4, h5, h6');
+      const link = textCell.querySelector('a');
+      if (heading && link) {
+        const headingText = heading.textContent.trim();
+        const linkText = link.textContent.trim();
+        // Append visually hidden descriptive text for SEO crawlers
+        const srOnly = document.createElement('span');
+        srOnly.className = 'sr-only';
+        srOnly.textContent = ` - ${headingText}`;
+        link.append(srOnly);
+        link.setAttribute('title', `${linkText} - ${headingText}`);
+      }
       card.append(textCell);
     }
 
