@@ -346,6 +346,7 @@ main > .section {
 }
 
 main > .section > div {
+  box-sizing: border-box;
   max-width: var(--max-width-site);
   margin: auto;
   padding: 0 var(--section-padding-horizontal);
