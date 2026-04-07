@@ -85,29 +85,29 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 16px 4px 0;
+  padding: 4px 0;
   transition: color var(--transition-base);
 }
 
-/* Arrow icon — vertically centered */
+/* Arrow — simple chevron, flex-centered for vertical alignment */
 .cards-news .cards-news-card-large .cards-news-card-body a::after {
   content: '\203A';
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  font-size: 28px;
-  line-height: 1;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 0;
 }
 
-/* Hover underline — hidden by default, appears on hover */
+/* Hover underline — only under the text, not the arrow */
 .cards-news .cards-news-card-large .cards-news-card-body a::before {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
-  right: 0;
+  width: calc(100% - 32px);
   height: 2px;
   background: rgb(227 239 250);
   opacity: 0;
@@ -208,6 +208,10 @@
 }
 
 /* ===== View all CTA — Boeing blue pill button with circled arrow ===== */
+.cards-news-container .default-content-wrapper p:last-child {
+  margin-top: 32px;
+}
+
 .cards-news-container .default-content-wrapper p:last-child a {
   display: inline-flex;
   align-items: center;
@@ -222,6 +226,7 @@
   letter-spacing: 1.3px;
   text-transform: uppercase;
   text-decoration: none;
+  box-shadow: 2px 7px 13px 2px rgb(0 0 0 / 25%);
   transition: gap 0.125s linear, background-color 0.125s linear, box-shadow 0.125s linear;
 }
 
