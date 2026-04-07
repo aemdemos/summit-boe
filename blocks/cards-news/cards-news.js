@@ -2,7 +2,10 @@
  * Cards News block - Asymmetric news layout.
  * First card renders as a large feature card (left).
  * Remaining cards render as smaller tiles (right, 2x2 grid).
- * Content model per row: [image] [text (heading, description, link)]
+ *
+ * Content model per row (authored by user):
+ *   [image] [title heading + "Learn More" or "Read more" link on new line]
+ *
  * @param {Element} block
  */
 export default function decorate(block) {
@@ -24,7 +27,6 @@ export default function decorate(block) {
     if (imageCell) {
       const imageDiv = document.createElement('div');
       imageDiv.classList.add('cards-news-card-image');
-      // Handle both <picture> wrapped and raw <img> elements
       const pic = imageCell.querySelector('picture');
       const img = imageCell.querySelector('img');
       if (pic) {

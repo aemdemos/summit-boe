@@ -1,8 +1,16 @@
 /* cards-news block */
+
+/* Section heading — H2 for accessibility but styled like H3 (43px bold) */
+.cards-news-container h2 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
 .cards-news {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 /* ===== Featured (large) card ===== */
@@ -56,6 +64,7 @@
   margin: 0 0 24px;
   font-size: 35px;
   font-weight: 700;
+  max-width: 400px;
 }
 
 .cards-news .cards-news-card-large .cards-news-card-body p {
@@ -64,6 +73,7 @@
 
 /* LEARN MORE cta — tertiary style with arrow */
 .cards-news .cards-news-card-large .cards-news-card-body a {
+  position: relative;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
@@ -85,7 +95,7 @@
 .cards-news .cards-news-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 24px;
 }
 
 .cards-news .cards-news-card-tile {
@@ -111,8 +121,10 @@
   display: block;
 }
 
+/* Tile body — relative for read more ::after */
 .cards-news .cards-news-card-tile .cards-news-card-body {
   padding: 16px 20px 20px;
+  position: relative;
 }
 
 .cards-news .cards-news-card-tile .cards-news-card-body h3 {
@@ -128,10 +140,34 @@
 .cards-news .cards-news-card-tile .cards-news-card-body h3::after {
   content: '';
   display: block;
-  width: 40px;
+  width: 37px;
   height: 2px;
-  background: #fff;
+  background: var(--boeing-light-blue);
   margin-top: 12px;
+  transition: width 0.25s linear;
+}
+
+/* "Read more" text — below the line, right-aligned, hidden by default */
+.cards-news .cards-news-card-tile .cards-news-card-body::after {
+  content: 'Read more';
+  display: block;
+  color: var(--boeing-light-blue);
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: right;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+  font-weight: 400;
+}
+
+/* Hover: line extends, read more fades in, title turns light blue */
+.cards-news .cards-news-card-tile:hover .cards-news-card-body h3::after {
+  width: 100%;
+}
+
+.cards-news .cards-news-card-tile:hover .cards-news-card-body::after {
+  opacity: 0.8;
 }
 
 .cards-news .cards-news-card-tile .cards-news-card-body p {
