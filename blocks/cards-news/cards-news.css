@@ -30,18 +30,13 @@
 }
 
 .cards-news .cards-news-card-large:hover {
-  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
 }
 
 .cards-news .cards-news-card-large .cards-news-card-image {
   position: absolute;
   inset: 0;
   z-index: 0;
-  transition: filter var(--transition-base);
-}
-
-.cards-news .cards-news-card-large:hover .cards-news-card-image {
-  filter: blur(8px);
 }
 
 .cards-news .cards-news-card-large .cards-news-card-image img {
@@ -71,8 +66,9 @@
   margin: 0;
 }
 
-/* LEARN MORE cta — tertiary style with circled arrow */
+/* LEARN MORE cta — tertiary style with simple chevron arrow */
 .cards-news .cards-news-card-large .cards-news-card-body a {
+  position: relative;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
@@ -81,20 +77,36 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  transition: color var(--transition-base);
 }
 
+/* Simple chevron arrow */
 .cards-news .cards-news-card-large .cards-news-card-body a::after {
   content: '\203A';
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 1.5px solid #fff;
-  border-radius: 50%;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
+}
+
+/* Hover underline — hidden by default, appears on hover */
+.cards-news .cards-news-card-large .cards-news-card-body a::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(227 239 250);
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.cards-news .cards-news-card-large:hover .cards-news-card-body a {
+  color: rgb(227 239 250);
+}
+
+.cards-news .cards-news-card-large:hover .cards-news-card-body a::before {
+  opacity: 1;
 }
 
 /* ===== Tile cards grid ===== */
