@@ -2,7 +2,10 @@
  * Cards News block - Asymmetric news layout.
  * First card renders as a large feature card (left).
  * Remaining cards render as smaller tiles (right, 2x2 grid).
- * Content model per row: [image] [text (heading, description, link)]
+ *
+ * Content model per row (authored by user):
+ *   [image] [title heading + "Learn More" or "Read more" link on new line]
+ *
  * @param {Element} block
  */
 export default function decorate(block) {
@@ -24,7 +27,6 @@ export default function decorate(block) {
     if (imageCell) {
       const imageDiv = document.createElement('div');
       imageDiv.classList.add('cards-news-card-image');
-      // Handle both <picture> wrapped and raw <img> elements
       const pic = imageCell.querySelector('picture');
       const img = imageCell.querySelector('img');
       if (pic) {
@@ -37,19 +39,18 @@ export default function decorate(block) {
 
     if (textCell) {
       textCell.classList.add('cards-news-card-body');
-      // Make generic links descriptive for accessibility and SEO
+
+      // Add descriptive aria-label for SEO/accessibility
       const heading = textCell.querySelector('h1, h2, h3, h4, h5, h6');
       const link = textCell.querySelector('a');
       if (heading && link) {
         const headingText = heading.textContent.trim();
         const linkText = link.textContent.trim();
-        // Append visually hidden descriptive text for SEO crawlers
-        const srOnly = document.createElement('span');
-        srOnly.className = 'sr-only';
-        srOnly.textContent = ` - ${headingText}`;
-        link.append(srOnly);
-        link.setAttribute('title', `${linkText} - ${headingText}`);
+        if (linkText !== headingText) {
+          link.setAttribute('aria-label', `${linkText} - ${headingText}`);
+        }
       }
+
       card.append(textCell);
     }
 
