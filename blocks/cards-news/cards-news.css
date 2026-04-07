@@ -89,25 +89,21 @@
   transition: color var(--transition-base);
 }
 
-/* Arrow — simple chevron, flex-centered for vertical alignment */
+/* Arrow — simple chevron, shifted up to align with text baseline */
 .cards-news .cards-news-card-large .cards-news-card-body a::after {
   content: '\203A';
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
-  line-height: 0;
+  font-size: 22px;
+  line-height: 1;
+  margin-top: -2px;
 }
 
-/* Hover underline — only under the text, not the arrow */
+/* Hover underline — extends under text and partially under arrow */
 .cards-news .cards-news-card-large .cards-news-card-body a::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: calc(100% - 32px);
+  width: calc(100% - 12px);
   height: 2px;
   background: rgb(227 239 250);
   opacity: 0;
