@@ -10,7 +10,7 @@
 .cards-news {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
 
 /* ===== Featured (large) card ===== */
@@ -127,7 +127,7 @@
 .cards-news .cards-news-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 24px;
 }
 
 .cards-news .cards-news-card-tile {
