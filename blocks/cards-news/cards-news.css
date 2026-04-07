@@ -26,12 +26,13 @@
   display: flex;
   align-items: flex-start;
   background-color: var(--boeing-blue);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
   transition: box-shadow var(--transition-base);
 }
 
-/* Card hover — box-shadow + image blur */
+/* Card hover — stronger shadow + image blur */
 .cards-news .cards-news-card-large:hover {
-  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
 .cards-news .cards-news-card-large .cards-news-card-image {
@@ -72,7 +73,7 @@
   margin: 0;
 }
 
-/* LEARN MORE cta — tertiary style with simple chevron arrow */
+/* LEARN MORE cta — tertiary style with arrow */
 .cards-news .cards-news-card-large .cards-news-card-body a {
   position: relative;
   color: #fff;
@@ -84,13 +85,19 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 4px 16px 4px 0;
   transition: color var(--transition-base);
 }
 
-/* Simple chevron arrow */
+/* Arrow icon — vertically centered */
 .cards-news .cards-news-card-large .cards-news-card-body a::after {
   content: '\203A';
-  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 28px;
   line-height: 1;
 }
 
@@ -127,11 +134,12 @@
   border-radius: 10px;
   overflow: hidden;
   background-color: var(--boeing-blue);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
   transition: box-shadow var(--transition-base);
 }
 
 .cards-news .cards-news-card-tile:hover {
-  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 35%);
 }
 
 /* Tile title changes to light blue on hover */
