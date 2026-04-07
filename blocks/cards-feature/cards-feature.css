@@ -61,7 +61,7 @@
 /* Override dark section global styles — card text must be white */
 .cards-feature .cards-feature-body h3 {
   color: #fff;
-  margin: 0 0 8px;
+  margin: 0 0 16px;
   font-size: 30px;
   font-weight: 700;
 }
@@ -74,13 +74,14 @@ main .section.dark .cards-feature .cards-feature-body h3 {
 .cards-feature .cards-feature-body p {
   color: #fff;
   font-size: 18px;
-  margin: 0 0 16px;
+  margin: 0 0 24px;
   line-height: 1.6;
 }
 
-/* CTA — tertiary style with chevron arrow */
+/* CTA — tertiary style with chevron arrow + hover underline */
 .cards-feature .cards-feature-body a,
 main .section.dark .cards-feature .cards-feature-body a {
+  position: relative;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
@@ -90,9 +91,11 @@ main .section.dark .cards-feature .cards-feature-body a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 4px 0;
   transition: color var(--transition-base);
 }
 
+/* Chevron arrow */
 .cards-feature .cards-feature-body a::after {
   content: '\203A';
   font-size: 22px;
@@ -100,8 +103,25 @@ main .section.dark .cards-feature .cards-feature-body a {
   margin-top: -2px;
 }
 
+/* Hover underline — under text only, fades in */
+.cards-feature .cards-feature-body a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 16px);
+  height: 2px;
+  background: rgb(227 239 250);
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
 .cards-feature .cards-feature-body a:hover {
-  color: var(--boeing-light-blue);
+  color: rgb(227 239 250);
+}
+
+.cards-feature .cards-feature-body a:hover::before {
+  opacity: 1;
 }
 
 /* Hover: text shadow for depth */
