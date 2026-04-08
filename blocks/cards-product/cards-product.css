@@ -1,28 +1,54 @@
 /* cards-product block */
+
+/* Section — smaller top padding than default */
+main > .section.cards-product-container {
+  padding-top: 48px;
+}
+
+/* Section heading */
+.cards-product-container h2 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 48px;
+}
+
 .cards-product > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 24px;
 }
 
 .cards-product > ul > li {
   position: relative;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   background-color: var(--boeing-navy);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
+  transition: box-shadow var(--transition-base);
+}
+
+/* Hover — shadow + image blur */
+.cards-product > ul > li:hover {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 35%);
 }
 
 .cards-product .cards-product-image {
   position: absolute;
   inset: 0;
   z-index: 0;
+  transition: filter var(--transition-base);
+}
+
+.cards-product > ul > li:hover .cards-product-image {
+  filter: blur(2px);
 }
 
 .cards-product .cards-product-image img {
@@ -31,14 +57,37 @@
   object-fit: cover;
 }
 
-/* gradient overlay for text readability */
+/* Default overlay — dark 25% */
 .cards-product > ul > li::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgb(0 0 0 / 60%) 0%, transparent 60%);
+  background: rgb(0 0 0 / 25%);
   pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+/* Hover overlay — Boeing blue gradient, crossfades with default */
+.cards-product > ul > li::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(0deg, rgb(0 51 161 / 40%), rgb(0 51 161 / 40%)),
+    linear-gradient(to top, rgb(0 51 161 / 80%), rgb(0 51 161 / 40%) 50%, rgb(0 51 161 / 20%));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.cards-product > ul > li:hover::after {
+  opacity: 0;
+}
+
+.cards-product > ul > li:hover::before {
+  opacity: 1;
 }
 
 .cards-product .cards-product-body {
@@ -52,36 +101,74 @@
   justify-content: center;
 }
 
-.cards-product .cards-product-body p {
-  color: rgb(255 255 255 / 70%);
-  font-size: var(--body-font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 0 0 4px;
+/* Pretitle (category) */
+.cards-product .cards-product-body p:first-child {
+  color: #fff;
+  font-size: 16px;
+  margin: 0 0 16px;
 }
 
-.cards-product .cards-product-body h3 {
+/* Product title — always white, override global section color */
+main .cards-product .cards-product-body h3 {
   color: #fff;
   margin: 0 0 auto;
-  font-size: 22px;
+  font-size: 30px;
+  font-weight: 700;
   padding-bottom: 16px;
 }
 
+/* CTA link — tertiary with chevron + hover underline */
 .cards-product .cards-product-body p:last-child {
   margin-top: auto;
 }
 
 .cards-product .cards-product-body a {
+  position: relative;
   color: #fff;
-  font-size: var(--body-font-size-xs);
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: var(--button-letter-spacing);
+  letter-spacing: 1.3px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  transition: color var(--transition-base);
+}
+
+/* Chevron arrow */
+.cards-product .cards-product-body a::after {
+  content: '\203A';
+  font-size: 22px;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+/* Hover underline */
+.cards-product .cards-product-body a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 12px);
+  height: 2px;
+  background: rgb(227 239 250);
+  opacity: 0;
+  transition: opacity 0.25s linear;
 }
 
 .cards-product .cards-product-body a:hover {
-  color: var(--boeing-light-blue);
+  color: rgb(227 239 250);
+}
+
+.cards-product .cards-product-body a:hover::before {
+  opacity: 1;
+}
+
+/* Hover text shadow */
+.cards-product > ul > li:hover .cards-product-body {
+  text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
 @media (width >= 600px) {
@@ -96,6 +183,6 @@
   }
 
   .cards-product > ul > li {
-    min-height: 340px;
+    min-height: 290px;
   }
 }
