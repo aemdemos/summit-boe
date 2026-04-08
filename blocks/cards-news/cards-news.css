@@ -28,7 +28,7 @@ main > .section.cards-news-container {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  min-height: 300px;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   background-color: var(--boeing-blue);
@@ -37,7 +37,7 @@ main > .section.cards-news-container {
 }
 
 .cards-news .cards-news-card-large:hover {
-  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
 .cards-news .cards-news-card-large .cards-news-card-image {
@@ -57,12 +57,20 @@ main > .section.cards-news-container {
   object-fit: cover;
 }
 
-/* Gradient overlay — Boeing blue from top, transparent at bottom */
+/* Gradient overlay — covers entire card, Boeing blue fading down */
+.cards-news .cards-news-card-large .cards-news-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgb(0 51 161 / 80%), rgb(0 51 161 / 40%) 50.5%, rgb(0 51 161 / 20%));
+  z-index: 1;
+}
+
+/* Text overlay — sits above gradient */
 .cards-news .cards-news-card-large .cards-news-card-body {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding: 32px;
-  background: linear-gradient(to bottom, rgb(0 51 161 / 80%), rgb(0 51 161 / 40%) 50%, rgb(0 51 161 / 20%));
   width: 100%;
 }
 
