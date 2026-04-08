@@ -2,6 +2,8 @@
 main > .section.hero-roadblock-container {
   padding: 0;
   margin: 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .hero-roadblock-container .hero-roadblock-wrapper {
@@ -28,6 +30,7 @@ main > .section.hero-roadblock-container {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 .hero-roadblock .hero-roadblock-media p {
@@ -55,6 +58,7 @@ main > .section.hero-roadblock-container {
   margin: 0;
   margin-left: var(--section-padding-horizontal);
   padding: 80px 64px;
+  box-sizing: border-box;
   background:
     url('/icons/meganav-bg-boeing-blue.svg') no-repeat 100% 0 / 400px,
     linear-gradient(45deg, var(--boeing-blue), var(--boeing-link-blue));
@@ -67,11 +71,6 @@ main > .section.hero-roadblock-container {
   margin-bottom: 48px;
   font-size: 31px;
   font-weight: 700;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-main .section.dark .hero-roadblock .hero-roadblock-content h3 {
-  color: #fff;
 }
 
 .hero-roadblock .hero-roadblock-content p {
@@ -114,15 +113,16 @@ main .section.dark .hero-roadblock .hero-roadblock-content h3 {
   transition: border-color 0.125s linear;
 }
 
+/* Hover — light blue bg, Boeing blue text stays */
 .hero-roadblock .hero-roadblock-content p a:hover {
-  background-color: var(--boeing-hover-dark);
-  color: #fff;
+  background-color: rgb(227 239 250);
+  color: var(--boeing-blue);
   gap: 32px;
   box-shadow: 2px 4px 8px 2px rgb(0 0 0 / 25%);
 }
 
 .hero-roadblock .hero-roadblock-content p a:hover::after {
-  border-color: #fff;
+  border-color: var(--boeing-blue);
 }
 
 /* right-aligned text variant */
