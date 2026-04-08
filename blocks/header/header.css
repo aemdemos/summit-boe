@@ -186,6 +186,7 @@ header nav .nav-careers {
   padding: 8px 32px;
   font-size: 16px;
   font-weight: 400;
+  line-height: 1.6;
   transition: background-color var(--transition-base), color var(--transition-base);
   white-space: nowrap;
   display: inline-block;
@@ -436,9 +437,9 @@ header .nav-search-bg {
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: calc(50vh - var(--header-utility-height) - var(--header-main-height));
-  min-height: 24rem;
-  padding-top: 24px;
+  height: calc(560px - var(--header-utility-height) - var(--header-main-height));
+  min-height: 434px;
+  padding-top: 58px;
   z-index: 1;
   overflow: visible;
 }
@@ -630,5 +631,20 @@ header .nav-search-toggle.active::after {
   header nav[aria-expanded='true'] {
     min-height: 100dvh;
     overflow-y: auto;
+  }
+}
+
+/* ===== ULTRA-WIDE — scale nav font at 2000px+ (matches reference) ===== */
+@media (width >= 2000px) {
+  header nav .nav-utility a {
+    font-size: 15px;
+  }
+
+  header nav .nav-sections .nav-links > li > a {
+    font-size: 18px;
+  }
+
+  header nav .nav-careers {
+    font-size: 18px;
   }
 }

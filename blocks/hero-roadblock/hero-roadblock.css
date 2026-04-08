@@ -48,6 +48,7 @@ main > .section.hero-roadblock-container {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: right center;
 }
 
 /* Text content overlay — aligned with main body content area */

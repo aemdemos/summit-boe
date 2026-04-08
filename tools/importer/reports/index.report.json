@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.boeing.com/",
+  "path": "index",
+  "timestamp": "2026-04-02T09:21:53.221Z",
+  "title": "The Boeing Company Official Website",
+  "template": "homepage",
+  "sections": [
+    "Hero Video",
+    "Recent News",
+    "Featured Products",
+    "Safety Roadblock",
+    "Our Purpose",
+    "Services Roadblock",
+    "Our Commitment",
+    "Careers Roadblock"
+  ]
+}

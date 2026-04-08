@@ -371,12 +371,17 @@ main .section.dark {
 
 main .section.dark h1,
 main .section.dark h3 {
-  color: var(--boeing-sky-blue);
+  color: #fff;
 }
 
 main .section.dark h2 {
   color: var(--boeing-cyan);
   margin-bottom: 64px;
+}
+
+/* Prevent margin collapse at dark section boundaries */
+main > .section.dark > div:first-child > *:first-child {
+  margin-top: 0;
 }
 
 main .section.dark h4,

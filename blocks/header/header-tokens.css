@@ -16,7 +16,7 @@
 @media (width >= 900px) {
   :root {
     --header-nav-padding: 0 32px;
-    --header-nav-gap: 32px;
+    --header-nav-gap: 8px;
     --header-brand-width: 170px;
   }
 }
