@@ -1,9 +1,15 @@
 /* cards-news block */
 
+/* Section — top padding only, no bottom (bottom space handled by View all CTA margin) */
+main > .section.cards-news-container {
+  padding-bottom: 0;
+}
+
 /* Section heading — H2 for accessibility but styled like H3 (43px bold) */
 .cards-news-container h2 {
   font-size: var(--heading-font-size-l);
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 48px;
 }
 

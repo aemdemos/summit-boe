@@ -132,11 +132,11 @@ accordion, card, card-carousel, cards, carousel, columns, embed, footer, form, f
 | 1 | **Hero video** | DONE | Brightcove video, 500px height, left-aligned 68px text, pause/play button, indigo gradient overlay |
 | 2 | **Recent news (cards-news)** | DONE | Featured card (top-left text, blur hover, Learn More underline), tiles (light blue line, Read more fade-in), View all pill button with stretch animation |
 | 3 | **Featured products (cards-product)** | NEXT | Needs: review against reference |
-| 4 | **Safety roadblock** | TODO | Needs: CTA pill button with circled arrow |
-| 5 | **Our Purpose (cards-feature)** | TODO | Needs: review |
-| 6 | **Services roadblock** | TODO | Needs: CTA pill button |
-| 7 | **Our Commitment (cards-feature + cards-mini)** | TODO | Needs: mini tiles styled, review |
-| 8 | **Careers roadblock** | TODO | Needs: CTA pill button |
+| 4 | **Safety roadblock (hero-roadblock)** | DONE | Gradient+texture text box, pill CTA with stretch hover, swoosh-bottom, aligned with content area |
+| 5 | **Our Purpose (cards-feature)** | DONE | 550px cards, navy-blue gradient, 30px titles, chevron CTAs with hover underline |
+| 6 | **Services roadblock (hero-roadblock)** | DONE | Same as #4, dark section metadata added |
+| 7 | **Our Commitment (cards-feature + cards-mini)** | NEXT | Needs: mini tiles styled, review |
+| 8 | **Careers roadblock (hero-roadblock right)** | DONE | Right variant, text box right-aligned with left-aligned content |
 | 9 | **Footer** | DONE | 4-col grid, earth image, dark indigo gradient, legal bar with separator |
 
 ---
