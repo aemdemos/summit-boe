@@ -50,13 +50,13 @@ main > .section.hero-roadblock-container {
   object-fit: cover;
 }
 
-/* text content overlay — gradient + texture background */
+/* Text content overlay — aligned with main body content area */
 .hero-roadblock .hero-roadblock-content {
   position: relative;
   z-index: 1;
-  max-width: 440px;
+  max-width: 535px;
   margin: 0;
-  margin-left: var(--section-padding-horizontal);
+  margin-left: max(var(--section-padding-horizontal), calc((100vw - var(--max-width-site)) / 2 + var(--section-padding-horizontal)));
   padding: 80px 64px;
   box-sizing: border-box;
   background:
@@ -136,20 +136,12 @@ main > .section.hero-roadblock-container {
 @media (width >= 600px) {
   .hero-roadblock.right .hero-roadblock-content {
     margin-left: auto;
-    margin-right: 48px;
+    margin-right: max(var(--section-padding-horizontal), calc((100vw - var(--max-width-site)) / 2 + var(--section-padding-horizontal)));
   }
 }
 
 @media (width >= 900px) {
   .hero-roadblock {
-    min-height: 536px;
-  }
-
-  .hero-roadblock .hero-roadblock-content {
-    margin-left: 64px;
-  }
-
-  .hero-roadblock.right .hero-roadblock-content {
-    margin-right: 64px;
+    min-height: 546px;
   }
 }
