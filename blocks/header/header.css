@@ -437,9 +437,9 @@ header .nav-search-bg {
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: calc(50vh - var(--header-utility-height) - var(--header-main-height));
-  min-height: 24rem;
-  padding-top: 24px;
+  height: calc(560px - var(--header-utility-height) - var(--header-main-height));
+  min-height: 434px;
+  padding-top: 58px;
   z-index: 1;
   overflow: visible;
 }
