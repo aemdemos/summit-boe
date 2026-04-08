@@ -65,7 +65,7 @@ main > .section.hero-roadblock-container {
   border-radius: 8px;
 }
 
-.hero-roadblock .hero-roadblock-content h3 {
+main .hero-roadblock .hero-roadblock-content h3 {
   color: #fff;
   margin-top: 0;
   margin-bottom: 48px;
@@ -125,12 +125,9 @@ main > .section.hero-roadblock-container {
   border-color: var(--boeing-blue);
 }
 
-/* right-aligned text variant */
+/* Right variant — text box on right side, content left-aligned */
 .hero-roadblock.right .hero-roadblock-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
+  margin-left: auto;
 }
 
 @media (width >= 600px) {
