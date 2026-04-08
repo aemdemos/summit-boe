@@ -47,14 +47,6 @@ main > .section.hero-roadblock-container {
   object-fit: cover;
 }
 
-.hero-roadblock .hero-roadblock-mobile {
-  display: block;
-}
-
-.hero-roadblock .hero-roadblock-desktop {
-  display: none;
-}
-
 /* text content overlay — sits on a semi-transparent blue panel */
 .hero-roadblock .hero-roadblock-content {
   position: relative;
@@ -127,14 +119,6 @@ main > .section.hero-roadblock-container {
 }
 
 @media (width >= 600px) {
-  .hero-roadblock .hero-roadblock-mobile {
-    display: none;
-  }
-
-  .hero-roadblock .hero-roadblock-desktop {
-    display: block;
-  }
-
   .hero-roadblock .hero-roadblock-content {
     max-width: 400px;
     margin-left: 48px;
