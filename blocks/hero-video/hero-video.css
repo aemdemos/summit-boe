@@ -1,4 +1,8 @@
 /* hero-video block */
+main > .section.hero-video-container {
+  padding: 0;
+}
+
 .hero-video-container .hero-video-wrapper {
   max-width: unset;
   padding: 0;
@@ -8,7 +12,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 400px;
+  min-height: 45vh;
   overflow: hidden;
   background-color: var(--boeing-navy);
 }
@@ -129,7 +133,7 @@
 
 @media (width >= 600px) {
   .hero-video {
-    min-height: 420px;
+    min-height: 45vh;
   }
 
   .hero-video .hero-video-text h1 {
@@ -138,9 +142,9 @@
   }
 }
 
-@media (width >= 900px) {
+@media (width >= 992px) {
   .hero-video {
-    min-height: 500px;
+    min-height: 60vh;
   }
 
   .hero-video .hero-video-text {
