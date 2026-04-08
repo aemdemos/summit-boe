@@ -67,7 +67,7 @@ const PAGE_TEMPLATE = {
     {
       id: 4,
       name: 'Safety Roadblock',
-      style: 'dark',
+      style: 'dark, swoosh-bottom',
       blocks: [
         { name: 'hero-roadblock', selector: '#roadblock-image-text-3e99e7fb-7332-4a54-9bdf-00af32dc78d8', parse: 'hero-roadblock-parser' },
       ],
@@ -89,7 +89,7 @@ const PAGE_TEMPLATE = {
     {
       id: 6,
       name: 'Services Roadblock',
-      style: null,
+      style: 'dark',
       blocks: [
         { name: 'hero-roadblock', selector: '#roadblock-image-text-ca5f7eaf-5575-4ad0-94ca-a6281a994777', parse: 'hero-roadblock-parser' },
       ],
@@ -101,19 +101,28 @@ const PAGE_TEMPLATE = {
       style: 'dark',
       blocks: [
         { name: 'cards-feature', selector: 'section:has(#text-042f2d7ecb)', parse: 'cards-feature-parser' },
-        { name: 'cards-mini', selector: 'section:has(#text-042f2d7ecb)', parse: 'cards-mini-parser' },
       ],
       defaultContent: [
         { position: 'before', selector: '#text-042f2d7ecb strong', tag: 'eyebrow' },
         { position: 'before', selector: '#title-8b441f72b7 .cmp-title__text', tag: 'h2' },
         { position: 'before', selector: '#text-b1baa726d9 h5', tag: 'p' },
-        { position: 'between', selector: '#title-11f26cbb22 .cmp-title__text', tag: 'h4', afterBlockIndex: 0 },
       ],
     },
     {
       id: 8,
-      name: 'Careers Roadblock',
+      name: 'Explore More',
       style: 'dark',
+      blocks: [
+        { name: 'cards-mini', selector: 'section:has(#text-042f2d7ecb)', parse: 'cards-mini-parser' },
+      ],
+      defaultContent: [
+        { position: 'before', selector: '#title-11f26cbb22 .cmp-title__text', tag: 'h3' },
+      ],
+    },
+    {
+      id: 9,
+      name: 'Careers Roadblock',
+      style: 'dark, swoosh-top',
       blocks: [
         { name: 'hero-roadblock', selector: '#roadblock-image-text-11820dcd-037a-4d97-bed0-9144abaa10b3', parse: 'hero-roadblock-parser', variant: 'right' },
       ],

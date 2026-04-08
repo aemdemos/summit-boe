@@ -24,16 +24,16 @@ export default function parse(el, document) {
 
     const textCell = [];
     if (title && link) {
-      const h5 = document.createElement('h5');
+      const h4 = document.createElement('h4');
       const a = document.createElement('a');
       a.href = link.href;
       a.textContent = title.textContent.trim();
-      h5.append(a);
-      textCell.push(h5);
+      h4.append(a);
+      textCell.push(h4);
     } else if (title) {
-      const h5 = document.createElement('h5');
-      h5.textContent = title.textContent.trim();
-      textCell.push(h5);
+      const h4 = document.createElement('h4');
+      h4.textContent = title.textContent.trim();
+      textCell.push(h4);
     }
 
     cells.push([mediaCell, textCell]);
