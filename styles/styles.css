@@ -16,6 +16,7 @@
   --boeing-link-blue: #0078b8;
   --boeing-secondary-blue: #19398a;
   --boeing-ice-blue: #e1f5fd;
+  --boeing-cyan: #009bdf;
 
   /* colors - semantic */
   --background-color: #fff;
@@ -45,8 +46,8 @@
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 16px;
 
-  /* layout — matches reference: 1152px up to 1440px, then 80vw above */
-  --max-width-site: 1152px;
+  /* layout — 80vw responsive, min 1152px, capped at 1536px */
+  --max-width-site: clamp(1152px, 80vw, 1536px);
 
   /* nav heights */
   --nav-height: 64px;
@@ -104,13 +105,6 @@
     --heading-font-size-s: 22px;
     --section-padding-vertical: 80px;
     --section-padding-horizontal: 32px;
-  }
-}
-
-/* wide desktop — container scales to 80% of viewport above 1440px */
-@media (width > 1440px) {
-  :root {
-    --max-width-site: 80vw;
   }
 }
 
@@ -353,6 +347,7 @@ main > .section {
 }
 
 main > .section > div {
+  box-sizing: border-box;
   max-width: var(--max-width-site);
   margin: auto;
   padding: 0 var(--section-padding-horizontal);
@@ -380,14 +375,25 @@ main .section.dark h3 {
 }
 
 main .section.dark h2 {
-  color: var(--boeing-sky-blue);
+  color: var(--boeing-cyan);
+  margin-bottom: 64px;
 }
 
 main .section.dark h4,
-main .section.dark h5,
 main .section.dark h6,
 main .section.dark p {
   color: #fff;
+}
+
+main .section.dark h5 {
+  color: #fff;
+}
+
+/* Dark section intro text — larger paragraph following H2 */
+main .section.dark .default-content-wrapper h2 + p {
+  font-size: 28px;
+  line-height: 1.3;
+  margin-bottom: 32px;
 }
 
 main .section.dark a {
@@ -437,11 +443,10 @@ main .section:not(.dark) h3 {
   color: var(--boeing-blue);
 }
 
-/* eyebrow text pattern (bold uppercase label above headings) */
+/* eyebrow text pattern (bold label above headings) */
 main .section .default-content-wrapper p strong:only-child {
-  font-size: var(--body-font-size-xs);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* "View all" CTA buttons — pill style with arrow */
@@ -455,3 +460,58 @@ main .section:not(.dark) .default-content-wrapper a.button:hover {
   background-color: var(--boeing-hover-dark);
   border-color: var(--boeing-hover-dark);
 }
+
+/* stylelint-disable property-no-vendor-prefix */
+
+/* Section swoosh decorations — author adds "swoosh: top" or "swoosh: bottom" in Section Metadata */
+
+/* Shared swoosh base — z-index ensures swoosh overlaps adjacent sections */
+main .section.swoosh-top,
+main .section.swoosh-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+/* Top swoosh — navy curve at top-left, overlapping previous section */
+main .section.swoosh-top::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 184px;
+  height: 144px;
+  background: var(--boeing-navy);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 184 145.5'%3E%3Cpath d='M64.24,59.56C92.58,22.05,137,-0.34,184,0V-1H0V144.5Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 184 145.5'%3E%3Cpath d='M64.24,59.56C92.58,22.05,137,-0.34,184,0V-1H0V144.5Z'/%3E%3C/svg%3E");
+  -webkit-mask-position: left top;
+  mask-position: left top;
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* Bottom swoosh — navy curve at bottom-right, overlapping next section */
+main .section.swoosh-bottom::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 184px;
+  height: 144px;
+  background: var(--boeing-navy);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 184 144.5'%3E%3Cpath d='M119.76,84.94C91.42,122.45,47,144.84,0,144.5v1H184V0Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 184 144.5'%3E%3Cpath d='M119.76,84.94C91.42,122.45,47,144.84,0,144.5v1H184V0Z'/%3E%3C/svg%3E");
+  -webkit-mask-position: right bottom;
+  mask-position: right bottom;
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* stylelint-enable property-no-vendor-prefix */

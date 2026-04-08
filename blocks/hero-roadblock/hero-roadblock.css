@@ -1,4 +1,9 @@
-/* hero-roadblock block */
+/* hero-roadblock block — no padding/margin, image fills edge-to-edge */
+main > .section.hero-roadblock-container {
+  padding: 0;
+  margin: 0;
+}
+
 .hero-roadblock-container .hero-roadblock-wrapper {
   max-width: unset;
   padding: 0;
@@ -23,6 +28,12 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+
+.hero-roadblock .hero-roadblock-media p {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
 }
 
 .hero-roadblock .hero-roadblock-media picture {

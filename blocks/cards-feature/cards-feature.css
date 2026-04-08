@@ -5,24 +5,35 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 24px;
 }
 
 .cards-feature > ul > li {
   position: relative;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  min-height: 320px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   background-color: var(--boeing-navy);
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 25%);
+  transition: box-shadow var(--transition-base);
+}
+
+.cards-feature > ul > li:hover {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 35%);
 }
 
 .cards-feature .cards-feature-image {
   position: absolute;
   inset: 0;
   z-index: 0;
+  transition: filter var(--transition-base);
+}
+
+.cards-feature > ul > li:hover .cards-feature-image {
+  filter: blur(8px);
 }
 
 .cards-feature .cards-feature-image img {
@@ -31,46 +42,91 @@
   object-fit: cover;
 }
 
-/* gradient overlay */
+/* Gradient overlay — navy to Boeing blue from bottom */
 .cards-feature > ul > li::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 20%) 50%, transparent 100%);
+  background: linear-gradient(to top, rgb(0 51 161) 0%, rgb(10 34 64 / 70%) 50%, rgb(10 34 64 / 5%) 100%);
   pointer-events: none;
 }
 
 .cards-feature .cards-feature-body {
   position: relative;
   z-index: 2;
-  padding: 24px;
+  padding: 32px;
 }
 
+/* Override dark section global styles — card text must be white */
 .cards-feature .cards-feature-body h3 {
   color: #fff;
-  margin: 0 0 8px;
-  font-size: var(--heading-font-size-m);
+  margin: 0 0 16px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+main .section.dark .cards-feature .cards-feature-body h3 {
+  color: #fff;
 }
 
 .cards-feature .cards-feature-body p {
-  color: rgb(255 255 255 / 80%);
-  font-size: var(--body-font-size-s);
-  margin: 0 0 16px;
-  line-height: 1.5;
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 24px;
+  line-height: 1.6;
 }
 
-.cards-feature .cards-feature-body a {
+/* CTA — tertiary style with chevron arrow + hover underline */
+.cards-feature .cards-feature-body a,
+main .section.dark .cards-feature .cards-feature-body a {
+  position: relative;
   color: #fff;
-  font-size: var(--body-font-size-xs);
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: var(--button-letter-spacing);
+  letter-spacing: 1.3px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  transition: color var(--transition-base);
+}
+
+/* Chevron arrow */
+.cards-feature .cards-feature-body a::after {
+  content: '\203A';
+  font-size: 22px;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+/* Hover underline — under text only, fades in */
+.cards-feature .cards-feature-body a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 16px);
+  height: 2px;
+  background: rgb(227 239 250);
+  opacity: 0;
+  transition: opacity 0.25s linear;
 }
 
 .cards-feature .cards-feature-body a:hover {
-  color: var(--boeing-light-blue);
+  color: rgb(227 239 250);
+}
+
+.cards-feature .cards-feature-body a:hover::before {
+  opacity: 1;
+}
+
+/* Hover: text shadow for depth */
+.cards-feature > ul > li:hover .cards-feature-body {
+  text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
 @media (width >= 600px) {
@@ -85,6 +141,6 @@
   }
 
   .cards-feature > ul > li {
-    min-height: 380px;
+    min-height: 550px;
   }
 }
