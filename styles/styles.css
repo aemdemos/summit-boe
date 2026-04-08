@@ -371,7 +371,7 @@ main .section.dark {
 
 main .section.dark h1,
 main .section.dark h3 {
-  color: var(--boeing-sky-blue);
+  color: #fff;
 }
 
 main .section.dark h2 {
