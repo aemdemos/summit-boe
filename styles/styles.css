@@ -379,6 +379,11 @@ main .section.dark h2 {
   margin-bottom: 64px;
 }
 
+/* Prevent margin collapse at dark section boundaries */
+main > .section.dark > div:first-child > *:first-child {
+  margin-top: 0;
+}
+
 main .section.dark h4,
 main .section.dark h6,
 main .section.dark p {

@@ -1,12 +1,16 @@
 /* cards-mini block */
 
-/* Section — reduce top padding since it follows another dark section */
-main > .section.cards-mini-container {
-  padding-top: 0;
+/* Section spacing — reduce gap when cards-mini follows cards-feature */
+main > .section.cards-feature-container:has(+ .section.cards-mini-container) {
+  padding-bottom: 0;
 }
 
-/* Explore more heading */
-.cards-mini-container h3 {
+main > .section.cards-mini-container {
+  padding-top: 32px;
+}
+
+/* Explore more heading — above cards-mini in its own dark section */
+.cards-mini-container .default-content-wrapper h3 {
   font-size: 35px;
   font-weight: 700;
   margin-top: 0;
