@@ -57,7 +57,7 @@ main > .section.cards-product-container {
   object-fit: cover;
 }
 
-/* Overlay — dark 25% on default, Boeing blue gradient on hover */
+/* Default overlay — dark 25% */
 .cards-product > ul > li::after {
   content: '';
   position: absolute;
@@ -68,8 +68,26 @@ main > .section.cards-product-container {
   transition: opacity var(--transition-base);
 }
 
+/* Hover overlay — Boeing blue gradient, crossfades with default */
+.cards-product > ul > li::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(0deg, rgb(0 51 161 / 40%), rgb(0 51 161 / 40%)),
+    linear-gradient(to top, rgb(0 51 161 / 80%), rgb(0 51 161 / 40%) 50%, rgb(0 51 161 / 20%));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
 .cards-product > ul > li:hover::after {
-  background: linear-gradient(to top, rgb(0 51 161 / 80%), rgb(0 51 161 / 40%) 50%, rgb(0 51 161 / 20%));
+  opacity: 0;
+}
+
+.cards-product > ul > li:hover::before {
+  opacity: 1;
 }
 
 .cards-product .cards-product-body {
@@ -87,7 +105,7 @@ main > .section.cards-product-container {
 .cards-product .cards-product-body p:first-child {
   color: #fff;
   font-size: 16px;
-  margin: 0 0 8px;
+  margin: 0 0 16px;
 }
 
 /* Product title — always white, override global section color */
